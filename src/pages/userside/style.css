@@ -630,13 +630,3 @@ footer {
         transform: translateX(0); /* slide in */
     }
 }
-
-.modal {
-  z-index: 9999;
-  pointer-events: auto;
-}
-.buy-button {
-  cursor: pointer;
-  z-index: 10;
-  position: relative;
-}
