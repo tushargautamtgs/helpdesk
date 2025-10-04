@@ -214,48 +214,48 @@ function UserHome() {
       )}
 
       {/* Payment Modal */}
-      {showModal && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close-button" onClick={closeModal}>&times;</span>
-            <h3>Select Payment Method</h3>
+{showModal && (
+  <div className="modal">
+    <div className="modal-content">
+      <span className="close-button" onClick={closeModal}>&times;</span>
+      <h3>Select Payment Method</h3>
 
-            {/* Tabs */}
-            <div className="tab-buttons">
-              <button onClick={() => setActiveTab("qr")} className={activeTab === "qr" ? "active-tab" : ""}>QR Code</button>
-              <button onClick={() => setActiveTab("upi")} className={activeTab === "upi" ? "active-tab" : ""}>UPI ID</button>
-            </div>
+      {/* Tabs */}
+      <div className="tab-buttons">
+        <button onClick={() => setActiveTab("qr")} className={activeTab === "qr" ? "active-tab" : ""}>QR Code</button>
+        <button onClick={() => setActiveTab("upi")} className={activeTab === "upi" ? "active-tab" : ""}>UPI ID</button>
+      </div>
 
-            {/* QR Tab */}
-            {activeTab === "qr" && (
-              <div className="tab-content">
-                <p style={{ textAlign: "center", marginTop: "10px" }}>QR Yet To Be Added Shortly</p>
-              </div>
-            )}
-
-            {/* UPI Tab */}
-            {activeTab === "upi" && (
-              <div className="tab-content">
-                <p>UPI ID: <strong>9557634034@amazonpay</strong></p>
-                <button onClick={copyUPI}>📋 Copy UPI ID</button>
-                <a href={upiLink} target="_blank" rel="noreferrer"
-                   style={{ marginTop: "12px", backgroundColor: "#007bff", color: "white", padding: "10px 14px", borderRadius: "6px", textDecoration: "none", display: "inline-block", fontWeight: 500 }}>
-                  💳 Pay using UPI App
-                </a>
-              </div>
-            )}
-
-            {/* UTR Submission */}
-            <hr style={{ margin: "20px 0" }} />
-            <h3 style={{ marginTop: "10px" }}>Enter Payment Details</h3>
-            <input type="text" placeholder="Your Name" value={name} onChange={(e) => setName(e.target.value)} />
-            <input type="text" placeholder="Contact Number" value={contact} onChange={(e) => setContact(e.target.value)} />
-            <input type="text" placeholder="Transaction/UTR ID" value={utr} onChange={(e) => setUtr(e.target.value)} />
+      {/* Tab Content */}
+      <div className="tab-content">
+        {activeTab === "qr" && (
+          <p style={{ textAlign: "center", marginTop: "10px" }}>QR Yet To Be Added Shortly</p>
+        )}
+        {activeTab === "upi" && upiLink && (
+          <div key={upiLink} style={{ marginTop: "10px" }}>
+            <p>UPI ID: <strong>9557634034@amazonpay</strong></p>
+            <button onClick={copyUPI} style={{ marginBottom: "10px" }}>📋 Copy UPI ID</button>
             <br />
-            <button onClick={submitUTR} style={{ padding: "10px 20px", backgroundColor: "#28a745", color: "white", border: "none", borderRadius: "6px" }}>Submit</button>
+            <a href={upiLink} target="_blank" rel="noreferrer"
+               style={{ marginTop: "12px", backgroundColor: "#007bff", color: "white", padding: "10px 14px", borderRadius: "6px", textDecoration: "none", display: "inline-block", fontWeight: 500 }}>
+              💳 Pay using UPI App
+            </a>
           </div>
-        </div>
-      )}
+        )}
+      </div>
+
+      {/* UTR Submission */}
+      <hr style={{ margin: "20px 0" }} />
+      <h3 style={{ marginTop: "10px" }}>Enter Payment Details</h3>
+      <input style={{border:"2px solid",borderRadius:"5px", borderColor:"red"}} type="text" placeholder="Your Name" value={name} onChange={(e) => setName(e.target.value)} />
+      <input type="text" placeholder="Contact Number" value={contact} onChange={(e) => setContact(e.target.value)} />
+      <input type="text" placeholder="Transaction/UTR ID" value={utr} onChange={(e) => setUtr(e.target.value)} />
+      <br />
+      <button onClick={submitUTR} style={{ padding: "10px 20px", backgroundColor: "#28a745", color: "white", border: "none", borderRadius: "6px" }}>Submit</button>
+    </div>
+  </div>
+)}
+
 
       {/* Toast */}
       {toastMessage && (
