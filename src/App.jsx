@@ -1,9 +1,13 @@
 import React from "react";
-import UserHome from "./pages/userside/UserHome";
-import "./index.css"; // ✅ correct path
+
+import "./index.css";
+import UserHome from "./pages/userside/userHome";
 
 function App() {
-  return <UserHome />;
+   
+  return <UserHome
+  />;
+  
 }
 
 export default App;
